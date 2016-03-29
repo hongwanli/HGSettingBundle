@@ -15,6 +15,8 @@
 		38622F211CAA4F1F00F13437 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38622F1F1CAA4F1F00F13437 /* LaunchScreen.storyboard */; };
 		38622F2C1CAA4F1F00F13437 /* HGSettingBundleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38622F2B1CAA4F1F00F13437 /* HGSettingBundleTests.m */; };
 		38622F371CAA4F1F00F13437 /* HGSettingBundleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38622F361CAA4F1F00F13437 /* HGSettingBundleUITests.m */; };
+		38622F491CAA58BD00F13437 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 38622F481CAA58BD00F13437 /* Settings.bundle */; };
+		38909EDF1CAA590F004298E3 /* BBTSettingInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 38909EDE1CAA590F004298E3 /* BBTSettingInformation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,10 @@
 		38622F321CAA4F1F00F13437 /* HGSettingBundleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HGSettingBundleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38622F361CAA4F1F00F13437 /* HGSettingBundleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGSettingBundleUITests.m; sourceTree = "<group>"; };
 		38622F381CAA4F1F00F13437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38622F481CAA58BD00F13437 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		38909EDD1CAA590F004298E3 /* BBTSettingInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTSettingInformation.h; sourceTree = "<group>"; };
+		38909EDE1CAA590F004298E3 /* BBTSettingInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBTSettingInformation.m; sourceTree = "<group>"; };
+		38909EE01CAA5B1D004298E3 /* BBTSettingInformationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBTSettingInformationDefine.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 				38622F1D1CAA4F1F00F13437 /* Assets.xcassets */,
 				38622F1F1CAA4F1F00F13437 /* LaunchScreen.storyboard */,
 				38622F221CAA4F1F00F13437 /* Info.plist */,
+				38622F471CAA589F00F13437 /* BBTSetting */,
 				38622F111CAA4F1F00F13437 /* Supporting Files */,
 			);
 			path = HGSettingBundle;
@@ -140,6 +147,17 @@
 			path = HGSettingBundleUITests;
 			sourceTree = "<group>";
 		};
+		38622F471CAA589F00F13437 /* BBTSetting */ = {
+			isa = PBXGroup;
+			children = (
+				38909EE01CAA5B1D004298E3 /* BBTSettingInformationDefine.h */,
+				38909EDD1CAA590F004298E3 /* BBTSettingInformation.h */,
+				38909EDE1CAA590F004298E3 /* BBTSettingInformation.m */,
+				38622F481CAA58BD00F13437 /* Settings.bundle */,
+			);
+			path = BBTSetting;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,6 +168,7 @@
 				38622F0A1CAA4F1F00F13437 /* Sources */,
 				38622F0B1CAA4F1F00F13437 /* Frameworks */,
 				38622F0C1CAA4F1F00F13437 /* Resources */,
+				38622F461CAA575400F13437 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -244,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38622F211CAA4F1F00F13437 /* LaunchScreen.storyboard in Resources */,
+				38622F491CAA58BD00F13437 /* Settings.bundle in Resources */,
 				38622F1E1CAA4F1F00F13437 /* Assets.xcassets in Resources */,
 				38622F1C1CAA4F1F00F13437 /* Main.storyboard in Resources */,
 			);
@@ -265,6 +285,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		38622F461CAA575400F13437 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"Release\" != \"$CONFIGURATION\"];\nthen echo \"copy Settings.bundle\"\ncp -r ${PROJECT_DIR}/BBTSetting/Settings.bundle ${BUILD_PRODUCTS_DIR/$PRODUCT_NAME}.app\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		38622F0A1CAA4F1F00F13437 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -273,6 +309,7 @@
 				38622F191CAA4F1F00F13437 /* ViewController.m in Sources */,
 				38622F161CAA4F1F00F13437 /* AppDelegate.m in Sources */,
 				38622F131CAA4F1F00F13437 /* main.m in Sources */,
+				38909EDF1CAA590F004298E3 /* BBTSettingInformation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +452,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HGSettingBundle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.higegou.HGSettingBundle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bbt.courier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -424,9 +461,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing iBBT Technology Co., Ltd. (XSYBBDDW46)";
 				INFOPLIST_FILE = HGSettingBundle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.higegou.HGSettingBundle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bbt.courier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -496,6 +534,7 @@
 				38622F3D1CAA4F1F00F13437 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38622F3E1CAA4F1F00F13437 /* Build configuration list for PBXNativeTarget "HGSettingBundleTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +543,7 @@
 				38622F401CAA4F1F00F13437 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38622F411CAA4F1F00F13437 /* Build configuration list for PBXNativeTarget "HGSettingBundleUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +552,7 @@
 				38622F431CAA4F1F00F13437 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

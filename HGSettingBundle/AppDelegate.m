@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "BBTSettingInformation.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[BBTSettingInformation shareInstance] resetSettingInfoIfNeeded:^{
+        NSLog(@"需要重置用户信息！");
+    }];
     return YES;
 }
 
